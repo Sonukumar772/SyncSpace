@@ -17,7 +17,7 @@ function Dashboard() {
 
   const fetchDocuments = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/documents', {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/documents`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setDocuments(res.data);
@@ -38,7 +38,7 @@ function Dashboard() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/documents',
+        `${import.meta.env.VITE_API_URL}/api/documents`,
         { title: newTitle || 'Untitled Document' },
         { headers: { Authorization: `Bearer ${token}` } }
       );

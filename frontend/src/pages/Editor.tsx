@@ -24,7 +24,7 @@ function Editor() {
 
   useEffect(() => {
     const newProvider = new SocketIOProvider(
-      'http://localhost:5000',
+      import.meta.env.VITE_API_URL,
       `syncspace-doc-${id}`,
       ydoc,
       {}
@@ -60,7 +60,7 @@ function Editor() {
       const token = localStorage.getItem('token');
 
       await axios.post(
-        `http://localhost:5000/api/documents/${id}/share`,
+        `${import.meta.env.VITE_API_URL}/api/documents/${id}/share`,
         { email: shareEmail, role: shareRole },
         { headers: { Authorization: `Bearer ${token}` } }
       );

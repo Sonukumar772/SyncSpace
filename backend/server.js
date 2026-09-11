@@ -13,13 +13,13 @@ const Document = require('./models/Document');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: 'https://syncspace-frontend-zzw3.onrender.com' }));
 app.use(express.json());
 
 const server = http.createServer(app);
 
 const io = new Server(server, {
-  cors: { origin: '*' },
+  cors: { origin: 'https://syncspace-frontend-zzw3.onrender.com' },
 });
 
 const ysocketio = new YSocketIO(io);
